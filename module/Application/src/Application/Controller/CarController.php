@@ -10,8 +10,10 @@ class CarController extends AbstractRestfulController
     public function getList()
     {
         $entityManager = $this->getEntityManager();
+        /* @var $entityManager \Doctrine\ORM\EntityManager */
         
         $carRepo = $entityManager->getRepository('Application\Entity\Car');
+        /* @var $carRepo \Application\Repository\CarRepository */
         
         try {
             $allCars = $carRepo->findAll();
@@ -51,6 +53,7 @@ class CarController extends AbstractRestfulController
         /* @var $carValidator \Application\Service\CarValidator */
         
         $entityManager = $this->getEntityManager();
+        /* @var $entityManager \Doctrine\ORM\EntityManager */
         
         if (!$carValidator->isValid($data, $entityManager)) {
             return $this->returnNoValidError();
